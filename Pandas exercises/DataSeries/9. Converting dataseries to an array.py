@@ -1,4 +1,4 @@
-# Write a Pandas program to convert a given Series to an array.
+# Write a Pandas program to convert a given data series to an array.
 
 # start
 # import modules
@@ -10,7 +10,7 @@ import numpy as np
 s = pd.Series(['pandas', '400', 'numpy', 'python', '20'])
 print("The Data Series is: ")
 print(s)
-# converting series to data frame
+# converting series to an array
 print("The array is: ")
 a = np.array(s.values.tolist())
 print (a)
