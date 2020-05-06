@@ -1,0 +1,11 @@
+# convert the first and last character
+# of each word to upper case in each word of a given series
+
+# start
+# import modules
+
+import pandas as pd
+series1 = pd.Series(['php', 'python', 'java', 'c#'])
+print(("Original Series:") + str(series1))
+result = series1.map(lambda  x: x[0].upper() + x[1:-1] + x[-1].upper())
+print(("\nFirst and last character of each word to upper case:") + str(result))
