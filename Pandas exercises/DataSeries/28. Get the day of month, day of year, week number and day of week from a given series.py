@@ -1,5 +1,5 @@
 # Write a Pandas program to get the day of month, day of year,
-# week number and day of week from a given series of date strings.
+# week number from a given series of date strings.
 
 # start
 # import modules
