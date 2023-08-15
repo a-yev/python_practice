@@ -1,0 +1,44 @@
+#Convert to xls
+import pandas as pd
+import json
+
+# Load the JSON file
+with open('path/to/file.json', 'r') as f:
+    data = json.load(f)
+
+# Create a DataFrame for each sheet
+tags_df = pd.json_normalize(data['tag'])
+triggers_df = pd.json_normalize(data['trigger'])
+variables_df = pd.json_normalize(data['variable'])
+
+# Create an Excel writer object
+writer = pd.ExcelWriter('path/to/output.xlsx')
+
+# Write each DataFrame to a separate sheet
+tags_df.to_excel(writer, sheet_name='tags', index=False)
+triggers_df.to_excel(writer, sheet_name='triggers', index=False)
+variables_df.to_excel(writer, sheet_name='variables', index=False)
+
+# Save the Excel file
+writer.save()
+
+#convert xls to json
+import pandas as pd
+import json
+
+# Load the Excel file
+excel_data_df = pd.read_excel('output.xlsx', sheet_name=None)
+
+# Create an empty dictionary to store the JSON data
+json_data = {}
+
+# Iterate over each sheet in the Excel file
+for sheet_name, df in excel_data_df.items():
+    # Convert the DataFrame to a list of dictionaries
+    data = df.to_dict(orient='records')
+    # Add the list of dictionaries to the JSON data dictionary
+    json_data[sheet_name] = data
+
+# Write the JSON data to a file
+with open('output.json', 'w') as f:
+    json.dump(json_data, f)
